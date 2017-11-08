@@ -12,6 +12,8 @@ public class PizzaService {
     public static PizzaService getPizzaService(){return ourInstance;}
 
 
+
+
     public void makeCall( String city){
 
         parseJsonData(HttpUtils.makeHttpRequest(Config.APP_URL+city+"&key="+Config.APP_ID));
@@ -27,25 +29,27 @@ public class PizzaService {
         JSONObject restaurant;
 
         double rating;
-
         double maxrating = 0;
+
+        String adress = "";
+        String name = "";
 
         for (int i = 0; i< results.length(); i++){
 
             restaurant = results.getJSONObject(i);
 
             rating = restaurant.getDouble("rating");
-            
 
             if (rating>maxrating){
                 maxrating = rating;
+                adress = restaurant.getString("formatted_address");
+                name = restaurant.getString("name");
             }
 
-
         }
-        System.out.println(maxrating);
+        PizzaModel pizzaModel = new PizzaModel(adress,maxrating,name);
 
-        //kom
+        System.out.println(pizzaModel);
 
 
 
