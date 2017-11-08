@@ -12,7 +12,7 @@ public class PizzaService {
     public static PizzaService getPizzaService(){return ourInstance;}
 
 
-    void makeCall( String city){
+    public void makeCall( String city){
 
         parseJsonData(HttpUtils.makeHttpRequest(Config.APP_URL+city+"@key="+Config.APP_ID));
 
@@ -23,6 +23,9 @@ public class PizzaService {
         JSONObject root = new JSONObject(text);
 
         JSONArray results = root.getJSONArray("results");
+        for (Object result : results) {
+            System.out.println(result.toString());
+        }
 
         JSONObject restaurant;
 
