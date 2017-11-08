@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.geometry.Insets?>
@@ -8,4 +10,14 @@
 <?import javafx.scene.control.Label?>
 
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" />
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Button fx:id="buttonSend" layoutX="211.0" layoutY="307.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="178.0" text="Wyślij zapytanie" />
+      <Label fx:id="labelResponse" alignment="CENTER" layoutX="144.0" layoutY="59.0" prefHeight="141.0" prefWidth="312.0" text="Tu wyświetli się odpowiedź" textAlignment="CENTER" textFill="#0d0db9" wrapText="true">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <TextField fx:id="textCity" layoutX="140.0" layoutY="254.0" prefHeight="25.0" prefWidth="320.0" promptText="Wprowadź miasto" />
+   </children>
+</AnchorPane>

@@ -1,4 +1,4 @@
-package pl.szymonkamil.models;
+package pl.szymonkamil.models.services;
 
 import org.json.JSONObject;
 import pl.szymonkamil.models.utils.Config;
