@@ -5,16 +5,33 @@ import org.json.JSONObject;
 import pl.szymonkamil.models.utils.Config;
 import pl.szymonkamil.models.utils.HttpUtils;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class PizzaService {
 
     private static PizzaService ourInstance = new PizzaService();
 
     public static PizzaService getPizzaService(){return ourInstance;}
 
+    private List<PizzaObserver> observers;
+
+    private PizzaService() {
+        observers = new ArrayList<>();
+    }
+
+    public void registerObserver(PizzaObserver observer){
+        observers.add(observer);
+    }
+
+    public void notifyObservers(PizzaModel model){
+        for (PizzaObserver observer : observers) {
+            observer.onPizzaUpdate(model);
+        }
+    }
 
 
-
-    public void makeCall( String city){
+    public void makeCall(String city){
 
         parseJsonData(HttpUtils.makeHttpRequest(Config.APP_URL+city+"&key="+Config.APP_ID));
 
@@ -34,7 +51,7 @@ public class PizzaService {
         String adress = "";
         String name = "";
 
-        for (int i = 0; i< results.length(); i++){
+        for (int i = 0; i < results.length(); i++){
 
             restaurant = results.getJSONObject(i);
 

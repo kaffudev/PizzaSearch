@@ -5,13 +5,15 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import pl.szymonkamil.models.services.PizzaModel;
+import pl.szymonkamil.models.services.PizzaObserver;
 import pl.szymonkamil.models.services.PizzaService;
 
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class MainController implements Initializable {
+public class MainController implements Initializable, PizzaObserver {
 
     @FXML
     Button buttonSend;
@@ -35,5 +37,9 @@ PizzaService pizzaService = PizzaService.getPizzaService();
 
     }
 
+    @Override
+    public void onPizzaUpdate(PizzaModel pizzaModel) {
 
+        labelResponse.setText(pizzaModel.toString());
+    }
 }
