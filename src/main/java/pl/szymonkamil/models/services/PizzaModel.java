@@ -5,6 +5,9 @@ public class PizzaModel {
     private String adress;
     private double rating;
     private String name;
+    private String status;
+    private int range;
+
 
     public PizzaModel(String adress, double rating, String name) {
         this.adress = adress;

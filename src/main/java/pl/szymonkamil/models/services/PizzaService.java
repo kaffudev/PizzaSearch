@@ -72,6 +72,8 @@ public class PizzaService {
         }
         PizzaModel pizzaModel = new PizzaModel(adress,maxrating,name);
 
+
+
         notifyObservers(pizzaModel);
 
 
