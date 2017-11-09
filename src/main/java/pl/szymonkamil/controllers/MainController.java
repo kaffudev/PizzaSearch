@@ -1,5 +1,6 @@
 package pl.szymonkamil.controllers;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -44,6 +45,6 @@ PizzaService pizzaService = PizzaService.getPizzaService();
     @Override
     public void onPizzaUpdate(PizzaModel pizzaModel) {
 
-        labelResponse.setText(pizzaModel.toString());
+        Platform.runLater(()->labelResponse.setText(pizzaModel.toString()));
     }
 }

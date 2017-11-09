@@ -7,6 +7,8 @@ import pl.szymonkamil.models.utils.HttpUtils;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class PizzaService {
 
@@ -20,6 +22,8 @@ public class PizzaService {
         observers = new ArrayList<>();
     }
 
+    private ExecutorService executorService = Executors.newSingleThreadExecutor();
+
     public void registerObserver(PizzaObserver observer){
         observers.add(observer);
     }
@@ -32,8 +36,8 @@ public class PizzaService {
 
 
     public void makeCall(String city){
-
-        parseJsonData(HttpUtils.makeHttpRequest(Config.APP_URL+city+"&key="+Config.APP_ID));
+        executorService.execute(()->
+            parseJsonData(HttpUtils.makeHttpRequest(Config.APP_URL+city+"&key="+Config.APP_ID)));
 
     }
 
