@@ -51,10 +51,10 @@ PizzaService pizzaService = PizzaService.getPizzaService();
             Platform.runLater(()->labelResponse.setText(model.get().printPizza()));
         }else {
 
-            JFrame jFrame = new JFrame("Uwaga !");
-
+            Platform.runLater(()->labelResponse.setText("Wprowadz inne dane."));
 
         }
+        System.out.println(model.isPresent());
 
 
 

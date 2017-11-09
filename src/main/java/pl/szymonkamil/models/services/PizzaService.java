@@ -55,14 +55,17 @@ public class PizzaService {
 
         JSONArray results = root.getJSONArray("results");
 
+        String status = root.getString("status");
+
         JSONObject restaurant;
 
         double rating;
+
         double maxrating = 0;
 
         String adress = "";
         String name = "";
-        String status = "";
+
 
 
         for (int i = 0; i < results.length(); i++){
@@ -75,25 +78,22 @@ public class PizzaService {
                 maxrating = rating;
                 adress = restaurant.getString("formatted_address");
                 name = restaurant.getString("name");
+
             }
 
         }
 
+        PizzaModel pizzaModel;
+        System.out.println(status);
 
-
-        PizzaModel pizzaModel = new PizzaModel(adress,maxrating,name);
-
-
+        if(status.equalsIgnoreCase("OK")){
+            pizzaModel = new PizzaModel(adress,maxrating,name);
+        }
+          else{
+            pizzaModel = null;
+        }
 
         notifyObservers(Optional.ofNullable(pizzaModel));
-
-
-
-
-
-
-
-
 
     }
 }
