@@ -40,14 +40,14 @@ public class MainController implements Initializable, PizzaObserver {
 
 
         listType.getItems().addAll("Pizza", "Bar", "Pub", "Restaurant");
-        listType.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+
+        listType.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
 
         buttonSend.setOnMouseClicked(e -> showPizza());
 
         pizzaService.registerObserver(this);
 
 
-        pizzaService.makeCall("Warszawa", 10000,foodType);
 
 
 
@@ -55,7 +55,10 @@ public class MainController implements Initializable, PizzaObserver {
 
     private void showPizza() {
 
-        pizzaService.makeCall(textCity.getText());
+        String chose = listType.getTypeSelector();
+        System.out.println(chose);
+
+        pizzaService.makeCall(textCity.getText(), Integer.valueOf(textRadius.getText()),chose);
 
     }
 

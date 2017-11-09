@@ -44,7 +44,7 @@ public class PizzaService {
 
     }
 
-    public void makeCall(String city, int radius, FoodType foodType){
+    public void makeCall(String city, int radius, String foodType){
         executorService.execute(()->
         parseJsonData(HttpUtils.makeHttpRequest(Config.APP_URL+foodType+"+in+"+city+"&radius="+radius+"&key="+Config.APP_ID)));
     }
