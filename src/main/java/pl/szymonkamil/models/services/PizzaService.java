@@ -66,29 +66,28 @@ public class PizzaService {
         String adress = "";
         String name = "";
 
+        PizzaModel pizzaModel;
 
+        if(status.equalsIgnoreCase("OK")){
 
-        for (int i = 0; i < results.length(); i++){
+            for (int i = 0; i < results.length(); i++){
 
-            restaurant = results.getJSONObject(i);
+                restaurant = results.getJSONObject(i);
 
-            rating = restaurant.getDouble("rating");
+                rating = restaurant.getDouble("rating");
 
-            if (rating>maxrating){
-                maxrating = rating;
-                adress = restaurant.getString("formatted_address");
-                name = restaurant.getString("name");
+                if (rating>maxrating){
+                    maxrating = rating;
+                    adress = restaurant.getString("formatted_address");
+                    name = restaurant.getString("name");
+
+                }
 
             }
 
-        }
-
-        PizzaModel pizzaModel;
-        System.out.println(status);
-
-        if(status.equalsIgnoreCase("OK")){
             pizzaModel = new PizzaModel(adress,maxrating,name);
         }
+
           else{
             pizzaModel = null;
         }

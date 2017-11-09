@@ -47,7 +47,8 @@ public class MainController implements Initializable, PizzaObserver {
         pizzaService.registerObserver(this);
 
 
-        pizzaService.makeCall("Warszawa", 10000, foodType );
+        pizzaService.makeCall("Warszawa", 10000,foodType);
+
 
 
     }
@@ -60,15 +61,16 @@ public class MainController implements Initializable, PizzaObserver {
 
     @Override
     public void onPizzaUpdate(Optional<PizzaModel> model) {
-        if (model.isPresent()) {
+        if (model.isPresent()){
 
-            Platform.runLater(() -> labelResponse.setText(model.get().printPizza()));
-        } else {
+            Platform.runLater(()->labelResponse.setText(model.get().printPizza()));
+        }else {
 
-            Platform.runLater(() -> labelResponse.setText("Wprowadz inne dane."));
+            Platform.runLater(()->labelResponse.setText("Wprowadz inne dane."));
 
         }
-        System.out.println(model.isPresent());
+
+
 
 
     }
