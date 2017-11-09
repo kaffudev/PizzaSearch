@@ -36,6 +36,12 @@ public class PizzaModel {
         this.name = name;
     }
 
+    public String printPizza(){
+        return "Nazwa pizzerii: " + name + "\n" +
+                "Adres lokalu: " + adress + "\n" +
+                "Ocena lokalu (max 5 *) : " + rating;
+    }
+
     @Override
     public String toString() {
         return "PizzaModel{" +
