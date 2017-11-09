@@ -11,6 +11,7 @@ import pl.szymonkamil.models.services.PizzaObserver;
 import pl.szymonkamil.models.services.PizzaService;
 
 
+import javax.swing.*;
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -45,7 +46,17 @@ PizzaService pizzaService = PizzaService.getPizzaService();
 
     @Override
     public void onPizzaUpdate(Optional<PizzaModel> model) {
+        if (model.isPresent()){
 
-        Platform.runLater(()->labelResponse.setText(model.toString()));
+            Platform.runLater(()->labelResponse.setText(model.get().printPizza()));
+        }else {
+
+            JFrame jFrame = new JFrame("Uwaga !");
+
+
+        }
+
+
+
     }
 }

@@ -11,10 +11,6 @@ import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.stream.Stream;
-
-import static java.util.Arrays.stream;
-import static javafx.scene.input.KeyCode.T;
 
 public class PizzaService {
 
