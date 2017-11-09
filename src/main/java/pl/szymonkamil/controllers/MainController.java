@@ -6,6 +6,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import pl.szymonkamil.models.services.FoodType;
 import pl.szymonkamil.models.services.PizzaModel;
 import pl.szymonkamil.models.services.PizzaObserver;
 import pl.szymonkamil.models.services.PizzaService;
@@ -28,11 +29,16 @@ public class MainController implements Initializable, PizzaObserver {
 
 PizzaService pizzaService = PizzaService.getPizzaService();
 
+FoodType foodType = FoodType.BAR;
+
     public void initialize(URL location, ResourceBundle resources) {
 
         buttonSend.setOnMouseClicked(e -> showPizza());
 
         pizzaService.registerObserver(this);
+
+
+        pizzaService.makeCall("Warszawa", 10000,foodType);
 
 
 
