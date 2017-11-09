@@ -37,10 +37,7 @@ FoodType foodType = FoodType.BAR;
 
         pizzaService.registerObserver(this);
 
-
         pizzaService.makeCall("Warszawa", 10000,foodType);
-
-
 
     }
 
@@ -60,7 +57,7 @@ FoodType foodType = FoodType.BAR;
             Platform.runLater(()->labelResponse.setText("Wprowadz inne dane."));
 
         }
-        System.out.println(model.isPresent());
+
 
 
 
