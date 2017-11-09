@@ -7,7 +7,6 @@ public class PizzaModel   {
     private String name;
     private String status;
     private int range;
-    private FoodType foodType;
 
     public PizzaModel(String adress, double rating, String name) {
 
@@ -30,14 +29,6 @@ public class PizzaModel   {
 
     public void setRange(int range) {
         this.range = range;
-    }
-
-    public FoodType getFoodType() {
-        return foodType;
-    }
-
-    public void setFoodType(FoodType foodType) {
-        this.foodType = foodType;
     }
 
 
@@ -66,9 +57,9 @@ public class PizzaModel   {
     }
 
     public String printPizza(){
-        return "Nazwa pizzerii: " + name + "\n" +
+        return "Nazwa lokalu: " + name + "\n" +
                 "Adres lokalu: " + adress + "\n" +
-                "Ocena lokalu (max 5 *) : " + rating;
+                "Ocena lokalu (max 5) : " + rating;
     }
 
     @Override

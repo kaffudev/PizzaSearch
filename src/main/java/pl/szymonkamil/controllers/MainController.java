@@ -4,13 +4,11 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import pl.szymonkamil.models.services.FoodType;
 import pl.szymonkamil.models.services.PizzaModel;
 import pl.szymonkamil.models.services.PizzaObserver;
 import pl.szymonkamil.models.services.PizzaService;
 
 
-import javax.swing.*;
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -32,14 +30,10 @@ public class MainController implements Initializable, PizzaObserver {
 
     PizzaService pizzaService = PizzaService.getPizzaService();
 
-    //FoodType foodType = FoodType.BAR;
-    FoodType foodType;
-
-
     public void initialize(URL location, ResourceBundle resources) {
 
 
-        listType.getItems().addAll("Pizza", "Bar", "Pub", "Restaurant");
+        listType.getItems().addAll("Pizza", "Bar", "Pub", "Restaurant", "Cafe");
 
         listType.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
 
@@ -47,18 +41,13 @@ public class MainController implements Initializable, PizzaObserver {
 
         pizzaService.registerObserver(this);
 
-
-
-
-
     }
 
     private void showPizza() {
 
-        String chose = listType.getTypeSelector();
-        System.out.println(chose);
-
-        pizzaService.makeCall(textCity.getText(), Integer.valueOf(textRadius.getText()),chose);
+        String chosedType = (String)listType.getSelectionModel().getSelectedItem();
+        System.out.println(chosedType);
+        pizzaService.makeCall(textCity.getText(), Integer.valueOf(textRadius.getText()),chosedType);
 
     }
 
@@ -72,9 +61,6 @@ public class MainController implements Initializable, PizzaObserver {
             Platform.runLater(()->labelResponse.setText("Wprowadz inne dane."));
 
         }
-
-
-
 
     }
 }
