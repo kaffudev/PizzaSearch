@@ -8,8 +8,13 @@ import pl.szymonkamil.models.utils.HttpUtils;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Optional;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.stream.Stream;
+
+import static java.util.Arrays.stream;
+import static javafx.scene.input.KeyCode.T;
 
 public class PizzaService {
 
@@ -30,7 +35,7 @@ public class PizzaService {
         observers.add(observer);
     }
 
-    public void notifyObservers(PizzaModel model){
+    public void notifyObservers(Optional<PizzaModel> model){
         for (PizzaObserver observer : observers) {
             observer.onPizzaUpdate(model);
         }
@@ -41,6 +46,11 @@ public class PizzaService {
         executorService.execute(()->
             parseJsonData(HttpUtils.makeHttpRequest(Config.APP_URL+city+"&key="+Config.APP_ID)));
 
+    }
+
+    public void makeCall(String city, int radius, FoodType foodType){
+        executorService.execute(()->
+        parseJsonData(HttpUtils.makeHttpRequest(Config.APP_URL+city)));
     }
 
     private void parseJsonData(String text) {
@@ -72,11 +82,14 @@ public class PizzaService {
             }
 
         }
+
+
+
         PizzaModel pizzaModel = new PizzaModel(adress,maxrating,name);
 
 
 
-        notifyObservers(pizzaModel);
+        notifyObservers(Optional.ofNullable(pizzaModel));
 
 
 

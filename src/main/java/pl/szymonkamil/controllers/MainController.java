@@ -12,6 +12,7 @@ import pl.szymonkamil.models.services.PizzaService;
 
 
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class MainController implements Initializable, PizzaObserver {
@@ -43,8 +44,8 @@ PizzaService pizzaService = PizzaService.getPizzaService();
     }
 
     @Override
-    public void onPizzaUpdate(PizzaModel pizzaModel) {
+    public void onPizzaUpdate(Optional<PizzaModel> model) {
 
-        Platform.runLater(()->labelResponse.setText(pizzaModel.printPizza()));
+        Platform.runLater(()->labelResponse.setText(model.printPizza()));
     }
 }
