@@ -29,6 +29,10 @@ PizzaService pizzaService = PizzaService.getPizzaService();
 
         buttonSend.setOnMouseClicked(e -> showPizza());
 
+        pizzaService.registerObserver(this);
+
+
+
     }
 
     private void showPizza() {

@@ -66,7 +66,7 @@ public class PizzaService {
         }
         PizzaModel pizzaModel = new PizzaModel(adress,maxrating,name);
 
-        System.out.println(pizzaModel);
+        notifyObservers(pizzaModel);
 
 
 
