@@ -56,6 +56,8 @@ public class PizzaService {
 
         String adress = "";
         String name = "";
+        String status = "";
+
 
         for (int i = 0; i < results.length(); i++){
 

@@ -7,13 +7,38 @@ public class PizzaModel {
     private String name;
     private String status;
     private int range;
-
+    private FoodType foodType;
 
     public PizzaModel(String adress, double rating, String name) {
         this.adress = adress;
         this.rating = rating;
         this.name = name;
     }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public int getRange() {
+        return range;
+    }
+
+    public void setRange(int range) {
+        this.range = range;
+    }
+
+    public FoodType getFoodType() {
+        return foodType;
+    }
+
+    public void setFoodType(FoodType foodType) {
+        this.foodType = foodType;
+    }
+
 
     public String getAdress() {
         return adress;
