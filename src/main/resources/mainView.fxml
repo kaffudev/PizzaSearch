@@ -7,12 +7,14 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.szymonkamil.controllers.MainController">
    <children>
-      <Button fx:id="buttonSend" layoutX="211.0" layoutY="307.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="178.0" text="Wyślij zapytanie" />
-      <Label fx:id="labelResponse" alignment="CENTER" layoutX="70.0" layoutY="59.0" prefHeight="172.0" prefWidth="468.0" text="Tu wyświetli się odpowiedź" textAlignment="CENTER" textFill="#0d0db9" wrapText="true">
+      <Button fx:id="buttonSend" layoutX="211.0" layoutY="307.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="188.0" text="Wyślij zapytanie" />
+      <Label fx:id="labelResponse" alignment="CENTER" layoutX="14.0" layoutY="37.0" prefHeight="172.0" prefWidth="327.0" text="Tu wyświetli się odpowiedź" textAlignment="CENTER" textFill="#0d0db9" wrapText="true">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <TextField fx:id="textCity" layoutX="140.0" layoutY="254.0" prefHeight="25.0" prefWidth="320.0" promptText="Wprowadź miasto" />
+      <TextField fx:id="textCity" layoutX="23.0" layoutY="255.0" prefHeight="25.0" prefWidth="162.0" promptText="Wprowadź miasto" />
+      <TextField fx:id="textRadius" layoutX="209.0" layoutY="255.0" prefHeight="25.0" prefWidth="188.0" promptText="szukaj w promieniu..." />
+      <ListView fx:id="listType" layoutX="423.0" layoutY="249.0" prefHeight="117.0" prefWidth="147.0" />
    </children>
 </AnchorPane>

@@ -3,9 +3,7 @@ package pl.szymonkamil.controllers;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import pl.szymonkamil.models.services.FoodType;
 import pl.szymonkamil.models.services.PizzaModel;
 import pl.szymonkamil.models.services.PizzaObserver;
@@ -25,21 +23,31 @@ public class MainController implements Initializable, PizzaObserver {
     TextField textCity;
     @FXML
     Label labelResponse;
+    @FXML
+    TextField textRadius;
+    @FXML
+    ListView listType;
 
 
-PizzaService pizzaService = PizzaService.getPizzaService();
 
-FoodType foodType = FoodType.BAR;
+    PizzaService pizzaService = PizzaService.getPizzaService();
+
+    //FoodType foodType = FoodType.BAR;
+    FoodType foodType;
+
 
     public void initialize(URL location, ResourceBundle resources) {
+
+
+        listType.getItems().addAll("Pizza", "Bar", "Pub", "Restaurant");
+        listType.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 
         buttonSend.setOnMouseClicked(e -> showPizza());
 
         pizzaService.registerObserver(this);
 
 
-        pizzaService.makeCall("Warszawa", 10000,foodType);
-
+        pizzaService.makeCall("Warszawa", 10000, foodType );
 
 
     }
@@ -52,16 +60,15 @@ FoodType foodType = FoodType.BAR;
 
     @Override
     public void onPizzaUpdate(Optional<PizzaModel> model) {
-        if (model.isPresent()){
+        if (model.isPresent()) {
 
-            Platform.runLater(()->labelResponse.setText(model.get().printPizza()));
-        }else {
+            Platform.runLater(() -> labelResponse.setText(model.get().printPizza()));
+        } else {
 
-            Platform.runLater(()->labelResponse.setText("Wprowadz inne dane."));
+            Platform.runLater(() -> labelResponse.setText("Wprowadz inne dane."));
 
         }
         System.out.println(model.isPresent());
-
 
 
     }
