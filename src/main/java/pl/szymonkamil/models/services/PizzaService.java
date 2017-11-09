@@ -6,9 +6,11 @@ import pl.szymonkamil.models.utils.Config;
 import pl.szymonkamil.models.utils.HttpUtils;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class PizzaService {
+
 
     private static PizzaService ourInstance = new PizzaService();
 

@@ -44,6 +44,6 @@ PizzaService pizzaService = PizzaService.getPizzaService();
     @Override
     public void onPizzaUpdate(PizzaModel pizzaModel) {
 
-        labelResponse.setText(pizzaModel.toString());
+        labelResponse.setText(pizzaModel.printPizza());
     }
 }
