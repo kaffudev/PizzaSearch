@@ -1,6 +1,6 @@
 package pl.szymonkamil.models.services;
 
-public class PizzaModel {
+public class PizzaModel  {
 
     private String adress;
     private double rating;

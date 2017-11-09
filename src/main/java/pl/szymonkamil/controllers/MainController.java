@@ -46,6 +46,6 @@ PizzaService pizzaService = PizzaService.getPizzaService();
     @Override
     public void onPizzaUpdate(Optional<PizzaModel> model) {
 
-        Platform.runLater(()->labelResponse.setText(model.printPizza()));
+        Platform.runLater(()->labelResponse.setText(model.toString()));
     }
 }
